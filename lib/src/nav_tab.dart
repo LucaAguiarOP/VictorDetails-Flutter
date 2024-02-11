@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:victordetailsflutter/src/HomePage.dart';
-import 'package:victordetailsflutter/src/ProfilePage.dart';
-import 'package:victordetailsflutter/src/ShopPage.dart';
-import 'package:victordetailsflutter/src/DiaryPage.dart';
+import 'package:victordetailsflutter/src/car_page.dart';
+import 'package:victordetailsflutter/src/profile_page.dart';
+import 'package:victordetailsflutter/src/shop_page.dart';
+import 'package:victordetailsflutter/src/diary_page.dart';
 
 
 
@@ -20,7 +20,7 @@ class _NavTabState extends State<NavTab> {
 int _selectedIndex = 0;
 
 final List<Widget> _pages = [
-  HomePage(),
+  CarPage(),
   DiaryPage(),
   ShopPage(),
   ProfilePage(),
