@@ -6,9 +6,6 @@ import 'package:victordetailsflutter/src/profile_page.dart';
 import 'package:victordetailsflutter/src/shop_page.dart';
 import 'package:victordetailsflutter/src/diary_page.dart';
 
-
-
-
 class NavTab extends StatefulWidget {
   const NavTab({super.key});
 
@@ -17,21 +14,20 @@ class NavTab extends StatefulWidget {
 }
 
 class _NavTabState extends State<NavTab> {
-int _selectedIndex = 0;
+  int _selectedIndex = 0;
 
-final List<Widget> _pages = [
-  CarPage(),
-  DiaryPage(),
-  ShopPage(),
-  ProfilePage(),
-  
-];
+  final List<Widget> _pages = [
+    CarPage(),
+    DiaryPage(),
+    ShopPage(),
+    ProfilePage(),
+  ];
 
-void _navigationBar(int index) {
-   setState(() {
-     _selectedIndex = index;
-   });
-}
+  void _navigationBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,22 +41,26 @@ void _navigationBar(int index) {
             onTabChange: _navigationBar,
             backgroundColor: Colors.black,
             color: Colors.white,
-            activeColor: Color.fromARGB(255,200, 0, 0),
+            activeColor: Color.fromARGB(255, 200, 0, 0),
             tabBackgroundColor: Colors.grey.shade900,
             gap: 10,
             padding: EdgeInsets.all(12),
             tabs: [
-              GButton(icon: (Iconsax.car),
-              text: 'Garagem', 
+              GButton(
+                icon: (Iconsax.car),
+                text: 'Garagem',
               ),
-              GButton(icon: (Iconsax.task_square),
-              text: 'Agenda',
+              GButton(
+                icon: (Iconsax.task_square),
+                text: 'Agenda',
               ),
-              GButton(icon: (Iconsax.shop),
-              text: 'Serviços',
+              GButton(
+                icon: (Iconsax.shop),
+                text: 'Serviços',
               ),
-              GButton(icon: (Iconsax.profile_circle),
-              text: 'Perfil',
+              GButton(
+                icon: (Iconsax.profile_circle),
+                text: 'Perfil',
               ),
             ],
           ),
@@ -69,4 +69,3 @@ void _navigationBar(int index) {
     );
   }
 }
-
