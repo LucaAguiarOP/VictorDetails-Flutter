@@ -8,7 +8,7 @@ class CarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'teste',
+        'Logado!',
         style: TextStyle(fontSize: 50),
       ),
     );
