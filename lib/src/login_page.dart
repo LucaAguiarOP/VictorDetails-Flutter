@@ -5,7 +5,7 @@ import 'package:victordetailsflutter/src/components/loginbutton.dart';
 import 'package:victordetailsflutter/src/components/textfield.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final passwordController = TextEditingController();
 
-  void SignUserIn() async {
+  void signUserIn() async {
     showDialog(
       context: context,
       builder: (context) {
@@ -31,18 +31,57 @@ class _LoginPageState extends State<LoginPage> {
         email: emailController.text,
         password: passwordController.text,
       );
+      Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
-
-
       if (e.code == 'user-not-found') {
         wrongEmailMessage();
-      } else if (e.code == 'wrong-password') {
-        wrongPassMessage();
+      } else if (emailController.text == '') {
+        emptyEmailMessage();
+      } else if (emailController.text == '' && passwordController.text == '') {
+        wrongEmailandPassMessage();
+      } else if (emailController.text == '') {
+        emptyEmailMessage();
       }
+
+      //   } else if (e.code == 'wrong-password') {
+      //     wrongPassMessage();
     }
   }
 
   void wrongEmailMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog(
+          title: Text('Email incorreto'),
+        );
+      },
+    );
+  }
+
+  void wrongEmailandPassMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog(
+          title: Text('Email e senhas'),
+        );
+      },
+    );
+  }
+
+  void emptyEmailMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog(
+          title: Text('Email vazio'),
+        );
+      },
+    );
+  }
+
+  void emptyPassMessage() {
     showDialog(
       context: context,
       builder: (context) {
@@ -52,7 +91,6 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
   }
-
 
   void wrongPassMessage() {
     showDialog(
@@ -75,19 +113,11 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 50),
-              const Icon(
-                Icons.lock,
-                size: 100,
+              Image.asset(
+                'lib/src/images/logovitor.png',
+                height: 200,
               ),
-              const SizedBox(height: 50),
-              Text(
-                'seja bem vindo!',
-                style: TextStyle(
-                  color: Colors.grey[700],
-                  fontSize: 16,
-                ),
-              ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 30),
               MyTextField(
                 controller: emailController,
                 obscureText: false,
@@ -114,9 +144,9 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 25),
-              MyButton(onTap: SignUserIn),
-              const SizedBox(height: 35),
+              const SizedBox(height: 40),
+              MyButton(onTap: signUserIn),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Row(
