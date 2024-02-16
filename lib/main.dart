@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:victordetailsflutter/src/auth_page.dart';
+
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+
+import 'src/auth_page.dart';
+import 'src/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +24,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const AuthPage(),
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFFE30613)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFE30613)),
+        scaffoldBackgroundColor: const Color.fromRGBO(33, 38, 46, 1),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color.fromRGBO(33, 38, 46, 1),
+          elevation: 0,
+        ),
       ),
     );
   }

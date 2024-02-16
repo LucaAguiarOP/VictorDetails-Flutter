@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:iconsax/iconsax.dart';
+
 import 'package:victordetailsflutter/src/car_page.dart';
+import 'package:victordetailsflutter/src/diary_page.dart';
 import 'package:victordetailsflutter/src/profile_page.dart';
 import 'package:victordetailsflutter/src/shop_page.dart';
-import 'package:victordetailsflutter/src/diary_page.dart';
 
 class NavTab extends StatefulWidget {
   const NavTab({super.key});
@@ -17,9 +19,9 @@ class _NavTabState extends State<NavTab> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    CarPage(),
-    DiaryPage(),
-    ShopPage(),
+    const CarPage(),
+    const DiaryPage(),
+    const ShopPage(),
     ProfilePage(),
   ];
 
@@ -41,11 +43,11 @@ class _NavTabState extends State<NavTab> {
             onTabChange: _navigationBar,
             backgroundColor: Colors.black,
             color: Colors.white,
-            activeColor: Color(0xFFE30613),
+            activeColor: const Color(0xFFE30613),
             tabBackgroundColor: Colors.grey.shade900,
             gap: 10,
-            padding: EdgeInsets.all(12),
-            tabs: [
+            padding: const EdgeInsets.all(12),
+            tabs: const [
               GButton(
                 icon: (Iconsax.car),
                 text: 'Garagem',

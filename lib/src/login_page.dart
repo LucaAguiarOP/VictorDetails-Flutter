@@ -1,5 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:victordetailsflutter/src/components/imagebutton.dart';
 import 'package:victordetailsflutter/src/components/loginbutton.dart';
 import 'package:victordetailsflutter/src/components/textfield.dart';
@@ -12,12 +14,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final emailController = TextEditingController();
+  bool isVisible = false;
 
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void signUserIn() async {
-    showDialog(
+  double get height => MediaQuery.of(context).size.height;
+
+  Future<void> signUserIn() async {
+    showDialog<void>(
       context: context,
       builder: (context) {
         return const Center(
@@ -31,7 +36,10 @@ class _LoginPageState extends State<LoginPage> {
         email: emailController.text,
         password: passwordController.text,
       );
-      Navigator.pop(context);
+
+      if (mounted) {
+        Navigator.pop(context);
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         wrongEmailMessage();
@@ -104,101 +112,125 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 50),
-              Image.asset(
-                'lib/src/images/logovitor.png',
-                height: 200,
-              ),
-              const SizedBox(height: 30),
-              MyTextField(
-                controller: emailController,
-                obscureText: false,
-                hintText: 'E-mail',
-              ),
-              MyTextField(
-                controller: passwordController,
-                obscureText: true,
-                hintText: 'senha',
-              ),
-              const SizedBox(height: 5),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Esqueceu sua Senha?',
-                      style: TextStyle(
-                        color: Colors.grey[700],
-                        fontSize: 12.0,
-                      ),
-                    ),
-                  ],
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        backgroundColor: Colors.grey[300],
+        appBar: AppBar(
+          toolbarHeight: height * 0.3,
+          backgroundColor: Colors.black,
+          title: Image.asset('assets/images/logovitor.png'),
+          shape: const RoundedRectangleBorder(
+              borderRadius:
+                  BorderRadius.vertical(bottom: Radius.elliptical(180, 80))),
+        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 30),
+                const Text(
+                  'Efetue o login:',
+                  style: TextStyle(
+                      color: Color.fromRGBO(148, 0, 0, 1),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600),
                 ),
-              ),
-              const SizedBox(height: 40),
-              MyButton(onTap: signUserIn),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey.shade500,
-                      ),
+                const SizedBox(height: 25),
+                MyTextField(
+                  controller: emailController,
+                  obscureText: false,
+                  hintText: 'E-mail',
+                ),
+                const SizedBox(height: 25),
+                MyTextField(
+                  controller: passwordController,
+                  obscureText: !isVisible,
+                  hintText: 'Senha',
+                  suffixIcon: IconButton(
+                      onPressed: () => setState(() => isVisible = !isVisible),
+                      color: const Color.fromRGBO(173, 143, 54, 1),
+                      icon: isVisible
+                          ? const Icon(Icons.visibility_off)
+                          : const Icon(Icons.visibility)),
+                ),
+                const SizedBox(height: 5),
+                Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      'Esqueceu sua senha?',
+                      textAlign: TextAlign.end,
+                      style: TextStyle(color: Colors.grey[700], fontSize: 12.0),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Ou continue com',
-                        style: TextStyle(
-                          color: Colors.grey[700],
+                  ),
+                ),
+                const SizedBox(height: 30),
+                MyButton(onTap: () async => await signUserIn()),
+                const SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey.shade500,
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Ou continue com',
+                          style: TextStyle(color: Colors.grey[700]),
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey.shade500,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ImageButton(imagePath: 'assets/images/apple.png'),
+                    SizedBox(width: 20),
+                    ImageButton(imagePath: 'assets/images/google.png')
+                  ],
+                ),
+                const SizedBox(height: 14),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Não é registrado?'),
+                    Text(
+                      ' registre-se agora!',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
                       ),
                     )
                   ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ImageButton(imagePath: 'lib/src/images/apple.png'),
-                  SizedBox(width: 20),
-                  ImageButton(imagePath: 'lib/src/images/google.png')
-                ],
-              ),
-              const SizedBox(height: 14),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Não é registrado?'),
-                  Text(
-                    '  registre-se agora!',
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                ],
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
