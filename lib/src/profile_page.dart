@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
@@ -14,11 +15,13 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(onPressed: signUserOut, icon: Icon(Icons.logout))],
+        actions: [
+          IconButton(onPressed: signUserOut, icon: const Icon(Icons.logout))
+        ],
       ),
       body: Text(
-        'logado como' + user.email!,
-        style: TextStyle(fontSize: 30),
+        'logado como${user.email!}',
+        style: const TextStyle(fontSize: 30),
       ),
     );
   }

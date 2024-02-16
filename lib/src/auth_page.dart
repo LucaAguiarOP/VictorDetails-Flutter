@@ -1,6 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:victordetailsflutter/src/car_page.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:victordetailsflutter/src/login_page.dart';
 import 'package:victordetailsflutter/src/nav_tab.dart';
 
@@ -14,13 +15,12 @@ class AuthPage extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return NavTab();
+            return const NavTab();
+          } else {
+            return const LoginPage();
           }
-          else {
-            return LoginPage();
-          }
-        }
-      )
+        },
+      ),
     );
   }
 }
