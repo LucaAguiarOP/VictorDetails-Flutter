@@ -41,7 +41,7 @@ class _NavTabState extends State<NavTab> {
             onTabChange: _navigationBar,
             backgroundColor: Colors.black,
             color: Colors.white,
-            activeColor: Color.fromARGB(255, 200, 0, 0),
+            activeColor: Color(0xFFE30613),
             tabBackgroundColor: Colors.grey.shade900,
             gap: 10,
             padding: EdgeInsets.all(12),
