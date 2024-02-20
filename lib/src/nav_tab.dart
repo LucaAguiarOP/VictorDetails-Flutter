@@ -36,38 +36,38 @@ class _NavTabState extends State<NavTab> {
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: Container(
-        color: Colors.black,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 16),
-          child: GNav(
-            onTabChange: _navigationBar,
-            backgroundColor: Colors.black,
-            color: Colors.white,
-            activeColor: const Color(0xFFE30613),
-            tabBackgroundColor: Colors.grey.shade900,
-            gap: 10,
-            padding: const EdgeInsets.all(12),
-            tabs: const [
-              GButton(
-                icon: (Iconsax.car),
-                text: 'Garagem',
-              ),
-              GButton(
-                icon: (Iconsax.task_square),
-                text: 'Agenda',
-              ),
-              GButton(
-                icon: (Iconsax.shop),
-                text: 'Serviços',
-              ),
-              GButton(
-                icon: (Iconsax.profile_circle),
-                text: 'Perfil',
-              ),
-            ],
+          color: Colors.transparent,
+          child: Container(
+            padding: const EdgeInsets.only(top:8, bottom:25, left: 10, right: 10 ),
+            child: GNav(
+              onTabChange: _navigationBar,
+              backgroundColor: Colors.transparent,
+              color: Colors.white,
+              activeColor: const Color(0xFFE30613),
+              tabBackgroundColor: Colors.grey.shade900,
+              gap: 8,
+              padding:  const EdgeInsets.only(top:8, bottom:10, left: 10, right: 10 ),
+              tabs: const [
+                GButton(
+                  icon: (Iconsax.car),
+                  text: 'Garagem',
+                ),
+                GButton(
+                  icon: (Iconsax.task_square),
+                  text: 'Agenda',
+                ),
+                GButton(
+                  icon: (Iconsax.shop),
+                  text: 'Serviços',
+                ),
+                GButton(
+                  icon: (Iconsax.profile_circle),
+                  text: 'Perfil',
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
