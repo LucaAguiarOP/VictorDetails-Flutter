@@ -1,4 +1,5 @@
 class Car {
+  final String name;
   final String model;
   final String brand;
   final String year;
@@ -6,6 +7,7 @@ class Car {
   final String imageUrl;
 
   const Car({
+    required this.name,
     required this.model,
     required this.brand,
     required this.year,
@@ -23,6 +25,7 @@ class Car {
     if (identical(this, other)) return true;
 
     return other is Car &&
+        other.name == name &&
         other.model == model &&
         other.brand == brand &&
         other.year == year &&
@@ -32,7 +35,8 @@ class Car {
 
   @override
   int get hashCode {
-    return model.hashCode ^
+    return name.hashCode ^
+        model.hashCode ^
         brand.hashCode ^
         year.hashCode ^
         color.hashCode ^

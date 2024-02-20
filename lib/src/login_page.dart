@@ -126,11 +126,11 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.grey[300],
         appBar: AppBar(
           toolbarHeight: height * 0.3,
-          backgroundColor: Colors.black,
-          title: Image.asset('assets/images/logovitor.png'),
+          backgroundColor: Colors.grey.shade300,
+          title: Image.asset('assets/images/logovitor.png',width: 300),
           shape: const RoundedRectangleBorder(
               borderRadius:
-                  BorderRadius.vertical(bottom: Radius.elliptical(180, 80))),
+                  BorderRadius.vertical(bottom: Radius.elliptical(180,90))),
         ),
         body: SafeArea(
           child: SingleChildScrollView(
@@ -139,12 +139,12 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 30),
+                const SizedBox(height: 15),
                 const Text(
                   'Efetue o login:',
                   style: TextStyle(
                       color: Color.fromRGBO(148, 0, 0, 1),
-                      fontSize: 20,
+                      fontSize: 15,
                       fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 25),
@@ -153,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                   obscureText: false,
                   hintText: 'E-mail',
                 ),
-                const SizedBox(height: 25),
+                const SizedBox(height: 20),
                 MyTextField(
                   controller: passwordController,
                   obscureText: !isVisible,
@@ -177,9 +177,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 MyButton(onTap: () async => await signUserIn()),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -206,7 +206,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

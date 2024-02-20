@@ -21,7 +21,10 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Text(
         'logado como${user.email!}',
-        style: const TextStyle(fontSize: 30),
+        style: const TextStyle(
+          fontSize: 30,
+          color: Colors.black
+          ),
       ),
     );
   }

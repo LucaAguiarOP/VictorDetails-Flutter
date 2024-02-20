@@ -14,7 +14,8 @@ class CarPage extends StatefulWidget {
 
 class _CarPageState extends State<CarPage> {
   final cars = <Car>[];
-
+  bool isLoading = false;
+  final carNameController = TextEditingController();
   double get height => MediaQuery.of(context).size.height;
   double get width => MediaQuery.of(context).size.width;
 
@@ -22,41 +23,48 @@ class _CarPageState extends State<CarPage> {
   void initState() {
     super.initState();
     Future.delayed(
-      const Duration(seconds: 2),
-      () => setState(
-        () => cars.addAll(
-          [
-            const Car(
-                model: 'Fusca',
-                brand: 'Volkswagen',
-                year: '1997',
-                color: 'Vermelha',
-                imageUrl:
-                    'https://lartbr.com.br/wp-content/uploads/2022/11/IMG_5591.jpg'),
-            const Car(
-                model: 'M420i',
-                brand: 'BMW',
-                year: '2023',
-                color: 'Azul',
-                imageUrl:
-                    'https://i.ytimg.com/vi/zGyjeqgAbdg/maxresdefault.jpg'),
-          ],
-        ),
-      ),
-    );
+        const Duration(seconds: 2),
+        () => setState(
+              () => cars.addAll(
+                [
+                  const Car(
+                      name: 'viadinho',
+                      model: 'Fusca',
+                      brand: 'Volkswagen',
+                      year: '1995',
+                      color: 'Vermelha',
+                      imageUrl:
+                          'https://lartbr.com.br/wp-content/uploads/2022/11/IMG_5591.jpg'),
+                  const Car(
+                      name: 'Bmwzinha',
+                      model: 'M420i',
+                      brand: 'BMW',
+                      year: '2023',
+                      color: 'Azul',
+                      imageUrl:
+                          'https://i.ytimg.com/vi/zGyjeqgAbdg/maxresdefault.jpg'),
+                ],
+              ),
+            ));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Garagem',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+        title: Row(
+          children: [
+            Image.asset('assets/images/logovitor.png', width: 110), 
+            const SizedBox(width: 33), 
+            const Text(
+              'Garagem',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
         ),
         centerTitle: true,
         actions: [
@@ -65,7 +73,7 @@ class _CarPageState extends State<CarPage> {
             child: const Text(
               'Adicionar',
               style: TextStyle(
-                color: Color.fromRGBO(148, 0, 0, 1),
+                color: Color(0xFFE30613),
                 fontSize: 17,
                 fontWeight: FontWeight.w600,
               ),
@@ -80,7 +88,7 @@ class _CarPageState extends State<CarPage> {
   }
 
   Widget _filledCarsBody() => Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(20),
         child: ListView.builder(
           itemCount: cars.length,
           itemBuilder: (context, index) {
@@ -99,7 +107,7 @@ class _CarPageState extends State<CarPage> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 leading: CircleAvatar(
-                  radius: 30.0,
+                  radius: 30,
                   backgroundImage: NetworkImage(car.imageUrl),
                   backgroundColor: Colors.transparent,
                 ),
@@ -297,17 +305,35 @@ class _CarPageState extends State<CarPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Column(
-                        mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(left: 16),
-                            child: Text(
-                              'Nome do carro',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
+                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Nome',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: 50.0),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                      ),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
                           ),
                           Divider()
