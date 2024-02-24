@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:iconsax/iconsax.dart';
-
 import 'package:victordetailsflutter/src/car_page.dart';
 import 'package:victordetailsflutter/src/diary_page.dart';
 import 'package:victordetailsflutter/src/profile_page.dart';
@@ -36,17 +34,28 @@ class _NavTabState extends State<NavTab> {
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: Container(
-          color: Colors.transparent,
-          child: Container(
-            padding: const EdgeInsets.only(top:8, bottom:25, left: 10, right: 10 ),
+        color: const Color.fromRGBO(51, 59, 71, 1),
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          const Divider(
+            height: 1,
+            thickness: 0.8,
+            color:
+            //  Color(0xFFE30613),
+                // Colors.grey
+                Color.fromRGBO(136, 4, 12, 1),
+          ),
+          Container(
+            padding:
+                const EdgeInsets.only(top: 8, bottom: 20, left: 10, right: 10),
             child: GNav(
               onTabChange: _navigationBar,
-              backgroundColor: Colors.transparent,
+              backgroundColor: const Color.fromRGBO(51, 59, 71, 1),
               color: Colors.white,
-              activeColor: const Color(0xFFE30613),
-              tabBackgroundColor: Colors.grey.shade900,
+              activeColor: const Color.fromRGBO(136, 4, 12, 1),
+              tabBackgroundColor: const Color.fromRGBO(33, 38, 46, 1),
               gap: 8,
-              padding:  const EdgeInsets.only(top:8, bottom:10, left: 10, right: 10 ),
+              padding: const EdgeInsets.only(
+                  top: 5, bottom: 10, left: 10, right: 10),
               tabs: const [
                 GButton(
                   icon: (Iconsax.car),
@@ -67,7 +76,8 @@ class _NavTabState extends State<NavTab> {
               ],
             ),
           ),
-        ),
-      );
+        ]),
+      ),
+    );
   }
 }

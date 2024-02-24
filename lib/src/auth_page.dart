@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:victordetailsflutter/src/login_page.dart';
-import 'package:victordetailsflutter/src/nav_tab.dart';
+import 'package:victordetailsflutter/src/components/nav_tab.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
