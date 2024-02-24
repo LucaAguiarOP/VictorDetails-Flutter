@@ -127,10 +127,10 @@ class _LoginPageState extends State<LoginPage> {
         appBar: AppBar(
           toolbarHeight: height * 0.3,
           backgroundColor: Colors.grey.shade300,
-          title: Image.asset('assets/images/logovitor.png',width: 300),
+          title: Image.asset('assets/images/logovitor.png', width: 300),
           shape: const RoundedRectangleBorder(
               borderRadius:
-                  BorderRadius.vertical(bottom: Radius.elliptical(180,90))),
+                  BorderRadius.vertical(bottom: Radius.elliptical(180, 90))),
         ),
         body: SafeArea(
           child: SingleChildScrollView(

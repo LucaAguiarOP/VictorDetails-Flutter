@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:victordetailsflutter/src/models/car_model.dart';
 
-
 class CarDetailsPage extends StatefulWidget {
   const CarDetailsPage({super.key, required this.car});
 
@@ -31,7 +30,9 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
         centerTitle: true,
         actions: [
           TextButton(
-            onPressed: () { editCarBottomSheet();},
+            onPressed: () {
+              editCarBottomSheet();
+            },
             child: const Text(
               'Editar',
               style: TextStyle(
@@ -89,11 +90,10 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                     ),
                   ],
                 ),
-               const SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    
                     const Text(
                       'Marca',
                       style: TextStyle(
@@ -182,7 +182,8 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
       ),
     );
   }
-    Future<void> editCarBottomSheet() async {
+
+  Future<void> editCarBottomSheet() async {
     return showModalBottomSheet<void>(
       context: context,
       isDismissible: false,

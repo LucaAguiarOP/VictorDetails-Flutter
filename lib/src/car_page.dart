@@ -14,7 +14,7 @@ class CarPage extends StatefulWidget {
 
 class _CarPageState extends State<CarPage> {
   final cars = <Car>[];
-  bool isLoading = false;
+  bool isLoading = true;
   final carNameController = TextEditingController();
   double get height => MediaQuery.of(context).size.height;
   double get width => MediaQuery.of(context).size.width;
@@ -46,6 +46,7 @@ class _CarPageState extends State<CarPage> {
                 ],
               ),
             ));
+    isLoading = false;
   }
 
   @override
@@ -54,8 +55,8 @@ class _CarPageState extends State<CarPage> {
       appBar: AppBar(
         title: Row(
           children: [
-            Image.asset('assets/images/logovitor.png', width: 110), 
-            const SizedBox(width: 33), 
+            Image.asset('assets/images/logovitor.png', width: 100),
+            const SizedBox(width: 43),
             const Text(
               'Garagem',
               style: TextStyle(
@@ -82,7 +83,7 @@ class _CarPageState extends State<CarPage> {
         ],
       ),
       body: Center(
-        child: cars.isEmpty ? _emptyCarsBody() : _filledCarsBody(),
+        child: cars.isEmpty ? const CircularProgressIndicator() : _filledCarsBody(),
       ),
     );
   }

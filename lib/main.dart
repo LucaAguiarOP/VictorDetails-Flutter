@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'package:firebase_core/firebase_core.dart';
-
 import 'src/auth_page.dart';
 import 'src/firebase_options.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('pt_BR', null);
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
