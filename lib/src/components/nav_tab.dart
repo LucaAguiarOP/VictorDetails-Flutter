@@ -41,8 +41,8 @@ class _NavTabState extends State<NavTab> {
             thickness: 0.8,
             color:
             //  Color(0xFFE30613),
-                // Colors.grey
-                Color.fromRGBO(136, 4, 12, 1),
+                Colors.grey
+                // Color.fromRGBO(136, 4, 12, 1),
           ),
           Container(
             padding:
@@ -55,7 +55,7 @@ class _NavTabState extends State<NavTab> {
               tabBackgroundColor: const Color.fromRGBO(33, 38, 46, 1),
               gap: 8,
               padding: const EdgeInsets.only(
-                  top: 5, bottom: 10, left: 10, right: 10),
+                  top: 8, bottom: 8, left: 10, right: 10),
               tabs: const [
                 GButton(
                   icon: (Iconsax.car),
