@@ -38,11 +38,11 @@ class _NavTabState extends State<NavTab> {
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           const Divider(
             height: 1,
-            thickness: 0.8,
+            thickness: 1,
             color:
             //  Color(0xFFE30613),
-                Colors.grey
-                // Color.fromRGBO(136, 4, 12, 1),
+                // Colors.grey
+                Color.fromRGBO(136, 4, 12, 1),
           ),
           Container(
             padding:

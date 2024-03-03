@@ -28,7 +28,7 @@ class _CarPageState extends State<CarPage> {
               () => cars.addAll(
                 [
                   const Car(
-                      name: 'viadinho',
+                      name: 'Fusquinha',
                       model: 'Fusca',
                       brand: 'Volkswagen',
                       year: '1995',
@@ -54,9 +54,9 @@ class _CarPageState extends State<CarPage> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset('assets/images/logovitor.png', width: 100),
-            const SizedBox(width: 43),
             const Text(
               'Garagem',
               style: TextStyle(
@@ -65,10 +65,6 @@ class _CarPageState extends State<CarPage> {
                 fontWeight: FontWeight.w600,
               ),
             ),
-          ],
-        ),
-        centerTitle: true,
-        actions: [
           TextButton(
             onPressed: () => addCarBottomSheet(),
             child: const Text(
@@ -80,7 +76,9 @@ class _CarPageState extends State<CarPage> {
               ),
             ),
           ),
-        ],
+          ],
+        ),
+        centerTitle: true,
       ),
       body: Center(
         child: cars.isEmpty ? const CircularProgressIndicator() : _filledCarsBody(),
