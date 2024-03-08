@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class MyButton extends StatelessWidget {
   final void Function()? onTap;
 
@@ -17,10 +19,10 @@ class MyButton extends StatelessWidget {
             color: const Color(0xFFE30613),
             borderRadius: BorderRadius.circular(15),
           ),
-          child: const Center(
+          child: Center(
               child: Text(
-            'Entrar',
-            style: TextStyle(
+            AppLocalizations.of(context)!.enter,
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 16,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:iconsax/iconsax.dart';
+
 import 'package:victordetailsflutter/src/car_page.dart';
 import 'package:victordetailsflutter/src/diary_page.dart';
 import 'package:victordetailsflutter/src/profile_page.dart';
@@ -40,7 +43,7 @@ class _NavTabState extends State<NavTab> {
             height: 1,
             thickness: 1,
             color:
-            //  Color(0xFFE30613),
+                //  Color(0xFFE30613),
                 // Colors.grey
                 Color.fromRGBO(136, 4, 12, 1),
           ),
@@ -54,24 +57,24 @@ class _NavTabState extends State<NavTab> {
               activeColor: const Color.fromRGBO(136, 4, 12, 1),
               tabBackgroundColor: const Color.fromRGBO(33, 38, 46, 1),
               gap: 8,
-              padding: const EdgeInsets.only(
-                  top: 8, bottom: 8, left: 10, right: 10),
-              tabs: const [
+              padding:
+                  const EdgeInsets.only(top: 8, bottom: 8, left: 10, right: 10),
+              tabs: [
                 GButton(
                   icon: (Iconsax.car),
-                  text: 'Garagem',
+                  text: AppLocalizations.of(context)!.garage,
                 ),
                 GButton(
                   icon: (Iconsax.task_square),
-                  text: 'Agenda',
+                  text: AppLocalizations.of(context)!.schedule,
                 ),
                 GButton(
                   icon: (Iconsax.shop),
-                  text: 'Serviços',
+                  text: AppLocalizations.of(context)!.services,
                 ),
                 GButton(
                   icon: (Iconsax.profile_circle),
-                  text: 'Perfil',
+                  text: AppLocalizations.of(context)!.profile,
                 ),
               ],
             ),

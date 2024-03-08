@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:victordetailsflutter/src/models/car_model.dart';
 
 class CarDetailsPage extends StatefulWidget {
@@ -33,9 +35,9 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
             onPressed: () {
               editCarBottomSheet();
             },
-            child: const Text(
-              'Editar',
-              style: TextStyle(
+            child: Text(
+              AppLocalizations.of(context)!.edit,
+              style: const TextStyle(
                 color: Color(0xFFE30613),
                 fontSize: 17,
                 fontWeight: FontWeight.w600,
@@ -61,9 +63,9 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 10),
-                const Text(
-                  'Informações do Veiculo',
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.vehicleInfo,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
@@ -73,9 +75,9 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Nome',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.name,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -94,9 +96,9 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Marca',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.brand,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -115,9 +117,9 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Modelo',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.model,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -136,9 +138,9 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Ano',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.year,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -157,9 +159,9 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Cor',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.color,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -214,17 +216,17 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                     children: [
                       TextButton(
                           onPressed: () => Navigator.pop(context),
-                          child: const Text(
-                            'Cancelar',
-                            style: TextStyle(
+                          child: Text(
+                            AppLocalizations.of(context)!.cancel,
+                            style: const TextStyle(
                               color: Color.fromRGBO(148, 0, 0, 1),
                               fontSize: 16,
                             ),
                           )),
                       const Spacer(),
-                      const Text(
-                        'Adicionar Carro',
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)!.addCar,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -233,9 +235,9 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                       const Spacer(),
                       TextButton(
                           onPressed: () => Navigator.pop(context),
-                          child: const Text(
-                            'Adicionar',
-                            style: TextStyle(
+                          child: Text(
+                            AppLocalizations.of(context)!.add,
+                            style: const TextStyle(
                               color: Color.fromRGBO(148, 0, 0, 1),
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -254,9 +256,9 @@ class _CarDetailsPageState extends State<CarDetailsPage> {
                   ),
                 ),
                 const SizedBox(height: 5),
-                const Text(
-                  'Escolher foto',
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.choosePhoto,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 13,
                   ),
