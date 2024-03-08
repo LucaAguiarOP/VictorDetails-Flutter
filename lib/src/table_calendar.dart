@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class MyTableCalendar extends StatefulWidget {
+  const MyTableCalendar({super.key});
+
   @override
-  _MyTableCalendarState createState() => _MyTableCalendarState();
+  State<MyTableCalendar> createState() => _MyTableCalendarState();
 }
 
 class _MyTableCalendarState extends State<MyTableCalendar> {
@@ -24,7 +28,7 @@ class _MyTableCalendarState extends State<MyTableCalendar> {
             focusedDay: _focusedDay,
             firstDay: DateTime.utc(2024, 1, 1),
             lastDay: DateTime.utc(2025, 12, 31),
-            locale: 'pt-Br',
+            locale: AppLocalizations.of(context)!.localeName,
             headerStyle: const HeaderStyle(
               leftChevronPadding: EdgeInsets.only(left: 30),
               rightChevronPadding: EdgeInsets.only(right: 30),
@@ -37,8 +41,7 @@ class _MyTableCalendarState extends State<MyTableCalendar> {
               ),
             ),
             daysOfWeekStyle: const DaysOfWeekStyle(
-              weekdayStyle:
-                  TextStyle(color: Colors.white),
+              weekdayStyle: TextStyle(color: Colors.white),
               weekendStyle: TextStyle(color: Colors.white),
             ),
             calendarStyle: const CalendarStyle(

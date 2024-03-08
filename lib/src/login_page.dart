@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:victordetailsflutter/src/components/imagebutton.dart';
 import 'package:victordetailsflutter/src/components/loginbutton.dart';
@@ -60,8 +61,8 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return const AlertDialog(
-          title: Text('Email incorreto'),
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.incorrectEmail),
         );
       },
     );
@@ -71,8 +72,8 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return const AlertDialog(
-          title: Text('Email e senhas'),
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.emailsAndPasswords),
         );
       },
     );
@@ -82,8 +83,8 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return const AlertDialog(
-          title: Text('Email vazio'),
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.emptyEmail),
         );
       },
     );
@@ -93,8 +94,8 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return const AlertDialog(
-          title: Text('Email errado'),
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.emptyPassword),
         );
       },
     );
@@ -104,8 +105,8 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return const AlertDialog(
-          title: Text('Senha errada'),
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.incorrectPassword),
         );
       },
     );
@@ -140,9 +141,9 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 15),
-                const Text(
-                  'Efetue o login:',
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.login,
+                  style: const TextStyle(
                       color: Color.fromRGBO(148, 0, 0, 1),
                       fontSize: 15,
                       fontWeight: FontWeight.w600),
@@ -157,7 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                 MyTextField(
                   controller: passwordController,
                   obscureText: !isVisible,
-                  hintText: 'Senha',
+                  hintText: AppLocalizations.of(context)!.password,
                   suffixIcon: IconButton(
                       onPressed: () => setState(() => isVisible = !isVisible),
                       color: const Color.fromRGBO(173, 143, 54, 1),
@@ -171,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      'Esqueceu sua senha?',
+                      AppLocalizations.of(context)!.forgotPassword,
                       textAlign: TextAlign.end,
                       style: TextStyle(color: Colors.grey[700], fontSize: 12.0),
                     ),
@@ -193,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          'Ou continue com',
+                          AppLocalizations.of(context)!.continueWith,
                           style: TextStyle(color: Colors.grey[700]),
                         ),
                       ),
@@ -216,13 +217,13 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 const SizedBox(height: 14),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Não é registrado?'),
+                    Text(AppLocalizations.of(context)!.notRegistered),
                     Text(
-                      ' registre-se agora!',
-                      style: TextStyle(
+                      AppLocalizations.of(context)!.registerNow,
+                      style: const TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
                       ),

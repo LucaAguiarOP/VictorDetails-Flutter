@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:victordetailsflutter/src/car_details_page.dart';
 import 'package:victordetailsflutter/src/models/car_model.dart';
@@ -27,20 +28,20 @@ class _CarPageState extends State<CarPage> {
         () => setState(
               () => cars.addAll(
                 [
-                  const Car(
+                  Car(
                       name: 'Fusquinha',
                       model: 'Fusca',
                       brand: 'Volkswagen',
                       year: '1995',
-                      color: 'Vermelha',
+                      color: AppLocalizations.of(context)!.red,
                       imageUrl:
                           'https://lartbr.com.br/wp-content/uploads/2022/11/IMG_5591.jpg'),
-                  const Car(
+                  Car(
                       name: 'Bmwzinha',
                       model: 'M420i',
                       brand: 'BMW',
                       year: '2023',
-                      color: 'Azul',
+                      color: AppLocalizations.of(context)!.blue,
                       imageUrl:
                           'https://i.ytimg.com/vi/zGyjeqgAbdg/maxresdefault.jpg'),
                 ],
@@ -57,31 +58,33 @@ class _CarPageState extends State<CarPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset('assets/images/logovitor.png', width: 100),
-            const Text(
-              'Garagem',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.garage,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
             ),
-          TextButton(
-            onPressed: () => addCarBottomSheet(),
-            child: const Text(
-              'Adicionar',
-              style: TextStyle(
-                color: Color(0xFFE30613),
-                fontSize: 17,
-                fontWeight: FontWeight.w600,
+            TextButton(
+              onPressed: () => addCarBottomSheet(),
+              child: Text(
+                AppLocalizations.of(context)!.add,
+                style: const TextStyle(
+                  color: Color(0xFFE30613),
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
-          ),
           ],
         ),
         centerTitle: true,
       ),
       body: Center(
-        child: cars.isEmpty ? const CircularProgressIndicator() : _filledCarsBody(),
+        child: cars.isEmpty
+            ? const CircularProgressIndicator()
+            : _filledCarsBody(),
       ),
     );
   }
@@ -198,12 +201,12 @@ class _CarPageState extends State<CarPage> {
                 ],
               )),
           const SizedBox(height: 25),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16),
             child: Text(
-              'Você não possui nenhum carro cadastrado :( ',
+              AppLocalizations.of(context)!.noCarRegistered,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
@@ -244,17 +247,17 @@ class _CarPageState extends State<CarPage> {
                     children: [
                       TextButton(
                           onPressed: () => Navigator.pop(context),
-                          child: const Text(
-                            'Cancelar',
-                            style: TextStyle(
+                          child: Text(
+                            AppLocalizations.of(context)!.cancel,
+                            style: const TextStyle(
                               color: Color.fromRGBO(148, 0, 0, 1),
                               fontSize: 16,
                             ),
                           )),
                       const Spacer(),
-                      const Text(
-                        'Adicionar Carro',
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)!.addCar,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -263,9 +266,9 @@ class _CarPageState extends State<CarPage> {
                       const Spacer(),
                       TextButton(
                           onPressed: () => Navigator.pop(context),
-                          child: const Text(
-                            'Adicionar',
-                            style: TextStyle(
+                          child: Text(
+                            AppLocalizations.of(context)!.add,
+                            style: const TextStyle(
                               color: Color.fromRGBO(148, 0, 0, 1),
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -284,9 +287,9 @@ class _CarPageState extends State<CarPage> {
                   ),
                 ),
                 const SizedBox(height: 5),
-                const Text(
-                  'Escolher foto',
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.choosePhoto,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 13,
                   ),
@@ -303,22 +306,22 @@ class _CarPageState extends State<CarPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Nome',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context)!.name,
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
                                   ),
                                 ),
-                                Expanded(
+                                const Expanded(
                                   child: Padding(
                                     padding: EdgeInsets.only(left: 50.0),
                                     child: TextField(
@@ -335,28 +338,28 @@ class _CarPageState extends State<CarPage> {
                               ],
                             ),
                           ),
-                          Divider()
+                          const Divider()
                         ],
                       ),
-                      const Column(
+                      Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Marca',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context)!.brand,
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
                                   ),
                                 ),
                                 Text(
-                                  'Nenhum',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context)!.none,
+                                  style: const TextStyle(
                                     color: Color.fromRGBO(179, 179, 178, 1),
                                     fontSize: 16,
                                   ),
@@ -364,27 +367,27 @@ class _CarPageState extends State<CarPage> {
                               ],
                             ),
                           ),
-                          Divider()
+                          const Divider()
                         ],
                       ),
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Modelo',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context)!.model,
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
                                   ),
                                 ),
                                 Text(
-                                  'Não escolhido',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context)!.notChosen,
+                                  style: const TextStyle(
                                     color: Color.fromRGBO(179, 179, 178, 1),
                                     fontSize: 16,
                                   ),
@@ -392,27 +395,27 @@ class _CarPageState extends State<CarPage> {
                               ],
                             ),
                           ),
-                          Divider()
+                          const Divider()
                         ],
                       ),
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Cor',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context)!.color,
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
                                   ),
                                 ),
                                 Text(
-                                  'Não escolhido',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context)!.notChosen,
+                                  style: const TextStyle(
                                     color: Color.fromRGBO(179, 179, 178, 1),
                                     fontSize: 16,
                                   ),
@@ -420,7 +423,7 @@ class _CarPageState extends State<CarPage> {
                               ],
                             ),
                           ),
-                          Divider()
+                          const Divider()
                         ],
                       ),
                       Padding(
@@ -428,9 +431,9 @@ class _CarPageState extends State<CarPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
-                              'Ano',
-                              style: TextStyle(
+                            Text(
+                              AppLocalizations.of(context)!.year,
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                               ),
@@ -442,9 +445,9 @@ class _CarPageState extends State<CarPage> {
                                 color: const Color.fromRGBO(76, 84, 98, 1),
                                 borderRadius: BorderRadius.circular(4),
                               ),
-                              child: const Text(
-                                '01 de Janeiro 1999',
-                                style: TextStyle(
+                              child: Text(
+                                AppLocalizations.of(context)!.yearMock,
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 13,
                                 ),
